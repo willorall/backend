@@ -13,15 +13,15 @@ class Pemesanan extends Migration
      */
     public function up()
     {
-        Schema::create('pemesanan', function (Blueprint $table) {
+        Schema::create('pemesanans', function (Blueprint $table) {
             $table->id();
             $table->integer('id_user_yang_pinjam');
             $table->integer('id_kendaraan');
             $table->integer('jarak');
             $table->date('tanggal_pinjam');
-            $table->date('tanggal_kembali');
+            $table->date('tanggal_kembali')->nullable();
             $table->integer('id_user_persetujuan_1');
-            $table->integer('id_user_persetujuan_2');
+            $table->integer('id_user_persetujuan_2')->nullable();
             $table->timestamps();
         });
         //

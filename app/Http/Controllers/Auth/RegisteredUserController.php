@@ -3,13 +3,16 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use App\Models\kendaraan;
+use App\Models\departemen;
+use App\Models\pemesanan;
+use App\Models\User;
 
 class RegisteredUserController extends Controller
 {
@@ -20,7 +23,9 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
-        return view('auth.register');
+        $data['departemen']= departemen::with(['departemenuser'])->get();
+        // dd($departemen['departemen']);
+        return view('auth.register', compact('data'));
     }
 
     /**
@@ -41,6 +46,8 @@ class RegisteredUserController extends Controller
 
         $user = User::create([
             'name' => $request->name,
+            'role' => $request->role,
+            'id_departemen' => $request->id_departemen,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);

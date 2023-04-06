@@ -13,7 +13,7 @@ class Departemen extends Migration
      */
     public function up()
     {
-        Schema::create('departemen', function (Blueprint $table) {
+        Schema::create('departemens', function (Blueprint $table) {
             $table->id();
             $table->enum('tipe',['kantor_pusat','kantor_cabang','tambang']);
             $table->string('keterangan')->nullable();
