@@ -19,6 +19,23 @@
                 <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
             </div>
 
+            <div class="mt-4">
+                <label for="role" >Role</label>
+                <select id="role" name="role" class="block mt-1 w-full">
+                    <option value="admin">Admin</option>
+                    <option value="atasan">Super Admin</option>
+                </select>
+            </div>
+
+            <div class="mt-4">
+                <label for="id_departemen" >Departemen</label>
+                <select id="id_departemen" name="id_departemen">
+                    @foreach ($data['departemen'] as $item)
+                        <option value="{{ $item->id }}">{{ $item->lokasi }}</option>
+                    @endforeach
+                </select>
+            </div>
+
             <!-- Email Address -->
             <div class="mt-4">
                 <x-label for="email" :value="__('Email')" />

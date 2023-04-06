@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\dosencontroller;
-
+use App\Http\Controllers\kendaraancontroller;
+use App\Http\Controllers\departemencontroller;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +24,15 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
+Route::get('/kendaraan',[kendaraancontroller::class, 'index']);
+Route::get('/kendaraan/create',[kendaraancontroller::class, 'create']);
+Route::post('/kendaraan',[kendaraancontroller::class, 'store']);
+Route::get('/kendaraan/edit/{id}',[kendaraancontroller::class, 'edit']);
+Route::put('/kendaraan/{id}',[kendaraancontroller::class, 'update']);
+
+Route::get('/departemen',[departemencontroller::class, 'index']);
+Route::get('/departemen/create',[departemencontroller::class, 'create']);
+Route::post('/departemen',[departemencontroller::class, 'store']);
+Route::get('/departemen/edit/{id}',[departemencontroller::class, 'edit']);
+Route::put('/departemen/{id}',[departemencontroller::class, 'update']);

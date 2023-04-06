@@ -13,18 +13,16 @@ class Kendaraan extends Migration
      */
     public function up()
     {
-        Schema::create('kendaraan', function (Blueprint $table) {
+        Schema::create('kendaraans', function (Blueprint $table) {
             $table->id();
+            $table->string('kode_kendaraan')->unique();
             $table->enum('jenis',['angkutan_barang','angkutan_orang']);
-            $table->string("email")->unique();
-            $table->string("password")->unique();
-            $table->string("id_departemen");
             $table->enum("status",['rusak','aktif','non_aktif','dipakai','diservice']);
             $table->enum("sewa",['true','false']);
-            $table->date("tgl_akhir_service");
-            $table->date("tgl_service_selanjutnya");
-            $table->integer("jarak_service");
-            $table->string("satuan_jarak");
+            $table->date("tgl_akhir_service")->nullable();
+            $table->date("tgl_service_selanjutnya")->nullable();
+            $table->integer("jarak_service")->nullable();
+            $table->string("satuan_jarak")->nullable();
             $table->timestamps();
         });
         //
